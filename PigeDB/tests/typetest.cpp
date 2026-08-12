@@ -11,5 +11,4 @@ int main() {
     std::cout << "is 1.23456 a decimal " << pigedb::isDecimal("1.23456") << "\n";
     std::cout << "is hello a decimal " << pigedb::isDecimal("hello") << "\n";
     std::cout << "is hello.1 a decimal " << pigedb::isDecimal("hello.1") << "\n";
-
 }
