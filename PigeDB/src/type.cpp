@@ -1,10 +1,30 @@
 #include "../include/type.h"
-#include <iostream>
 #include <cctype>
 
 namespace pigedb {
+    Type detectType(const std::string &value) {
 
-bool isBoolean(const std::string &value) {
+        Type type = Type::Text;
+
+        if (isDecimal(value) == true) {
+             type = Type::Decimal;
+        }
+        else if (isBoolean(value) == true) {
+             type = Type::Boolean;
+        }
+        else if (isInteger(value) == true) {
+             type = Type::Integer;
+        }
+        else if (isDate(value) == true) {
+             type = Type::Date;
+        }
+
+        return type;
+
+    }
+
+
+    bool isBoolean(const std::string &value) {
     return value == "true" || value == "false";
 }
 bool isInteger(const std::string &value)

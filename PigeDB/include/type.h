@@ -20,7 +20,7 @@ namespace pigedb {
         Binary
     };
 
-    Type detect_type(const std::string& value);
+    Type detectType(const std::string& value);
 
     bool isInteger(const std::string& value);
     bool isDecimal(const std::string& value);
