@@ -81,7 +81,52 @@ bool isDecimal(const std::string &value) {
             return false;
     }
 
-    return true;
+    int year =
+        (value[0] - '0') * 1000 +
+        (value[1] - '0') * 100 +
+        (value[2] - '0') * 10 +
+        (value[3] - '0');
+
+    int month =
+        (value[5] - '0') * 10 +
+        (value[6] - '0');
+
+    int day =
+        (value[8] - '0') * 10 +
+        (value[9] - '0');
+
+    if (month < 1 || month > 12)
+        return false;
+
+    int daysInMonth;
+
+    switch (month)
+    {
+        case 2:
+            if ((year % 400 == 0) ||
+                (year % 4 == 0 && year % 100 != 0))
+            {
+                daysInMonth = 29;
+            }
+            else
+            {
+                daysInMonth = 28;
+            }
+            break;
+
+        case 4:
+        case 6:
+        case 9:
+        case 11:
+            daysInMonth = 30;
+            break;
+
+        default:
+            daysInMonth = 31;
+            break;
+    }
+
+    return day >= 1 && day <= daysInMonth;
 }
 }
 
