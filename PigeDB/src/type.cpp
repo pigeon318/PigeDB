@@ -63,6 +63,26 @@ bool isDecimal(const std::string &value) {
 
     return hasDecimalPoint;
 }
+
+    bool isDate(const std::string& value)
+{
+    if (value.size() != 10)
+        return false;
+
+    if (value[4] != '-' || value[7] != '-')
+        return false;
+
+    for (std::size_t i = 0; i < value.size(); ++i)
+    {
+        if (i == 4 || i == 7)
+            continue;
+
+        if (!std::isdigit(static_cast<unsigned char>(value[i])))
+            return false;
+    }
+
+    return true;
+}
 }
 
 
